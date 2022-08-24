@@ -7,7 +7,7 @@ For any technical questions, please contact info@accelerynt.com
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAccelerynt-Security%2FAS-IP-Blocklist%2Fmain%2Fazuredeploy.json)
 [![Deploy to Azure Gov](https://aka.ms/deploytoazuregovbutton)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAccelerynt-Security%2FAS-IP-Blocklist%2Fmain%2Fazuredeploy.json)       
 
-This playbook is intended to be run from Microsoft Sentinel. Based upon Alert Rule Criteria, it will grab the IP address from Microsoft Sentinel Alerts and add them to a Microsoft Azure Conditional Access Named Locations list, indicating compromised IP addresses.
+This playbook is intended to be run from Microsoft Sentinel. Based upon desired Alert Rule Criteria, it will grab the IP address from Microsoft Sentinel Alerts and add them to a Microsoft Azure Conditional Access Named Locations list, indicating compromised IP addresses.
                                                                                                                                      
 ![NamedLocations_Demo](Images/NamedLocations_Demo.png)
  
@@ -27,7 +27,7 @@ The following items are required under the template settings during deployment:
                                                                                                                                      
 #### Create a Named Locations list:
 
-Navigate to the Micosoft Azure Active Directory Menu:
+Navigate to the Microsoft Azure Active Directory Menu:
 
 https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/Overview
 
@@ -167,14 +167,6 @@ When prompted, sign in to validate the connection.
 Once both connection steps have been updated, click the "**Save**" button.
 
 ![NamedLocations_Deploy_8](Images/NamedLocations_Deploy_8.png)  
-
-#
-### Running the Playbook
-To run this playbook automatically on Alerts in Microsoft Sentinel,
-
-
-![NamedLocations_Run_1](Images/NamedLocations_Run_1.png)
-
 
 #
 ### Granting Access to Azure Key Vault

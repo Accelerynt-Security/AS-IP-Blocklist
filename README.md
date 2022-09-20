@@ -7,7 +7,7 @@ For any technical questions, please contact info@accelerynt.com
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAccelerynt-Security%2FAS-IP-Blocklist%2Fmain%2Fazuredeploy.json)
 [![Deploy to Azure Gov](https://aka.ms/deploytoazuregovbutton)](https://portal.azure.us/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAccelerynt-Security%2FAS-IP-Blocklist%2Fmain%2Fazuredeploy.json)       
 
-This playbook is intended to be run from Microsoft Sentinel. Based upon desired Alert Rule Criteria, it will grab the IP address from Microsoft Sentinel Alerts and add them to a Microsoft Azure Conditional Access Named Locations list, indicating compromised IP addresses.
+This playbook is intended to be run from a Microsoft Sentinel Incident. It will add the IP address from Microsoft Sentinel Incidents to a Microsoft Azure Conditional Access Named Locations list, indicating compromised IP addresses.
                                                                                                                                      
 ![NamedLocations_Demo](Images/NamedLocations_Demo.png)
  
@@ -153,7 +153,7 @@ Click on the “**Edit**” button. This will bring us into the Logic Apps Desig
 
 ![NamedLocations_Deploy_4](Images/NamedLocations_Deploy_4.png)
 
-The first and sixth steps labeled "**Connections**" use connections created during the deployment of this playbook. Before the playbook can be run, these connections will either need to be authorized in the indicated steps, or existing authorized connections may be alternatively selected.  
+The first, second, and sixth steps labeled "**Connections**" use connections created during the deployment of this playbook. Before the playbook can be run, these connections will either need to be authorized in the indicated steps, or existing authorized connections may be alternatively selected.  
 
 ![NamedLocations_Deploy_5](Images/NamedLocations_Deploy_5.png)
 
@@ -164,9 +164,10 @@ To validate the connections created for this playbook, expand the "**Connections
 When prompted, sign in to validate the connection.                                                                                                
                                                                                                 
 ![NamedLocations_Deploy_7](Images/NamedLocations_Deploy_7.png)                                                                                                                                                                                                                                                   
-Once both connection steps have been updated, click the "**Save**" button.
+Once all connection steps have been updated, click the "**Save**" button.
 
 ![NamedLocations_Deploy_8](Images/NamedLocations_Deploy_8.png)  
+
 
 #
 ### Granting Access to Azure Key Vault

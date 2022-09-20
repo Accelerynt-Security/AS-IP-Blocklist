@@ -72,6 +72,9 @@ Under "**Application permissions**", search for "**Policy**", then select the "*
 
 ![NamedLocations_Create_App_Registration_4](Images/NamedLocations_Create_App_Registration_4.png)
 
+In order for these permissions to be applied, admin consent must also be granted. Click the indicated "**Grant admin consent**" button on the "**API permissions**" page.
+![NamedLocations_Create_App_Registration_5_consent](Images/NamedLocations_Create_App_Registration_5_consent.png)
+
 Navigate back to the "**Overview**" section on the menu and take note of the "**Application (client) ID**" and "**Directory (tenant) ID**, as each will be needed for the deployment of this playbook. Click "**Add a certificate or secret**".
 
 ![NamedLocations_Create_App_Registration_5](Images/NamedLocations_Create_App_Registration_5.png)
@@ -172,7 +175,7 @@ Once all connection steps have been updated, click the "**Save**" button.
 #
 ### Granting Access to Azure Key Vault
 
-Before the Logic App can run successfully, the keyvault connection created during deployment must be granted access to the Key Vault storing your App Registration Secret.
+Before the Logic App can run successfully, the Key Vault connection created during deployment must be granted access to the Key Vault storing your App Registration Secret.
 
 From the Key Vault "**Access policies**" page, click "**Add Access Policy**".
 

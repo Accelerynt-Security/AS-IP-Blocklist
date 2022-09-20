@@ -25,13 +25,13 @@
         "AppRegistrationID": {
             "type": "String",
             "metadata" : {
-                "description" : "Name of the Key Vault that stores the App Registration Secret"
+                "description" : "Application (client) ID of the App Registration"
             }
         },
         "AppRegistrationTenant": {
             "type": "String",
             "metadata" : {
-                "description" : "Name of the Key Vault that stores the App Registration Secret"
+                "description" : "Directory (tenant) ID of the App Registration"
             }
         },
         "KeyVaultName": {
@@ -152,7 +152,7 @@
                                         "authentication": {
                                             "audience": "https://graph.microsoft.com",
                                             "clientId": "[parameters('AppRegistrationID')]",
-                                            "secret": "[parameters('SecretName')]",
+                                            "secret": "@body('Get_Secret')?['value']",
                                             "tenant": "[parameters('AppRegistrationTenant')]",
                                             "type": "ActiveDirectoryOAuth"
                                         },
@@ -219,14 +219,31 @@
                             },
                             "type": "Foreach"
                         },
-                        "HTTP_-_Get_Previous_List_Values": {
+                        "Get_Secret": {
                             "runAfter": {},
+                            "type": "ApiConnection",
+                            "inputs": {
+                                "host": {
+                                    "connection": {
+                                        "name": "@parameters('$connections')['keyvault']['connectionId']"
+                                    }
+                                },
+                                "method": "get",
+                                "path": "[concat('/secrets/@{encodeURIComponent(''', parameters('SecretName'), ''')}/value')]"
+                            }
+                        },
+                        "HTTP_-_Get_Previous_List_Values": {
+                            "runAfter": {
+                                "Get_Secret": [
+                                    "Succeeded"
+                                ]
+                            },
                             "type": "Http",
                             "inputs": {
                                 "authentication": {
                                     "audience": "https://graph.microsoft.com",
                                     "clientId": "[parameters('AppRegistrationID')]",
-                                    "secret": "[parameters('SecretName')]",
+                                    "secret": "@body('Get_Secret')?['value']",
                                     "tenant": "[parameters('AppRegistrationTenant')]",
                                     "type": "ActiveDirectoryOAuth"
                                 },
